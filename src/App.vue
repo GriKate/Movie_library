@@ -1,15 +1,16 @@
 <script setup>
-// import { RouterLink, RouterView } from 'vue-router'
-import AllMovies from './components/AllMovies.vue'
+import { RouterView } from 'vue-router'
+// import AllMovies from './components/AllMovies.vue'
 </script>
 
 <template>
   <header>
-    <div class="wrapper">
-      <AllMovies />
-    </div>
+    
   </header>
-
+  <div class="wrapper">
+    <RouterView />
+    <!-- <AllMovies /> -->
+  </div>
 </template>
 
 <style scoped>
