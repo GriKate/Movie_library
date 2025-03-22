@@ -1,0 +1,74 @@
+@use '../assets/variables.scss';
+
+.movieItem {
+    list-style: none;
+}
+.article {
+    margin-bottom: 24px;
+    background-color: variables.$grey3;
+    display: flex;
+}
+.imageWrapper {
+    padding: 0 28px;
+    background-color: variables.$grey1;
+    display: flex;
+    justify-content: center;
+}
+.movieImage {
+    display: block;
+    width: 112px;
+    object-fit: contain;
+}
+.wrapper {
+    margin: 32px 32px 32px 24px;
+}
+.movieName {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: variables.$white;
+    margin-bottom: 12px;
+}
+.description {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: variables.$grey2;
+    margin-bottom: 8px;
+}
+.descriptionActors {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: variables.$grey2;
+    // margin-bottom: 8px;
+    display: flex;
+}
+.actors {
+    display: block;
+    line-height: 16px;
+}
+.actorsNames {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    color: variables.$lightgrey;
+    text-transform: none;
+    display: block;
+    margin-left: 7px;
+}
+.descriptionText {
+    margin-top: 16px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+}

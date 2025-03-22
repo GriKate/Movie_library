@@ -9,12 +9,18 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: AllMovies,
+      children: [
+        {
+          path: '/movie/:id',
+          component: MovieCard
+        }
+      ]
     },
-    {
-      path: '/movie/:id',
-      name: 'movie',
-      component: MovieCard,
-    },
+    // {
+    //   path: '/movie/:id',
+    //   name: 'movie',
+    //   component: MovieCard,
+    // },
   ],
 })
 

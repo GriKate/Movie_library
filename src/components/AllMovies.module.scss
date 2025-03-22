@@ -1,3 +1,70 @@
-.container {
-    color: aqua;
+@use '../assets/variables.scss';
+
+.nav {
+    width: 100%;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    border-bottom: 1px solid variables.$grey1;
+    margin-bottom: 40px;
 }
+.navHeader {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    margin-bottom: 16px;
+}
+.sortTab {
+    margin-bottom: 14px;
+}
+.checkInpt {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    opacity: 0;
+    cursor: pointer;
+}
+.inputLabel {
+    position: relative;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    margin-right: 33px;
+    color: variables.$grey1;
+    cursor: pointer;
+    &::before {
+        content: url(../assets/img/check_box.svg);
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: -25px;
+        width: 18px;
+        height: 18px;
+        background-color: transparent;
+    }
+}
+.return {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 0%;
+    color: variables.$lightred;
+    display: flex;
+    margin-bottom: 3%;
+}
+.arrow {
+    display: block;
+    width: 30px;
+    height: 24px;
+    background-image: url(../assets/img/arrow.svg);
+    background-repeat: no-repeat;
+}
+// transition: background-color .3s;
