@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AllMovies from '@/components/AllMovies.vue'
 import MovieCard from '@/components/MovieCard.vue'
+// import NotFoundComponent from '@/components/NotFoundComponent.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,18 +10,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: AllMovies,
-      children: [
-        {
-          path: '/movie/:id',
-          component: MovieCard
-        }
-      ]
     },
-    // {
-    //   path: '/movie/:id',
-    //   name: 'movie',
-    //   component: MovieCard,
-    // },
+    {
+      path: '/movie/:id',
+      name: 'movie',
+      component: MovieCard,
+    },
   ],
 })
 
