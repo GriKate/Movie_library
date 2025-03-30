@@ -15,10 +15,12 @@
     background-color: variables.$grey1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .movieImage {
     display: block;
     width: 112px;
+    height: 168px;
     object-fit: contain;
 }
 .wrapper {
@@ -31,6 +33,7 @@
     line-height: 36px;
     color: variables.$white;
     margin-bottom: 12px;
+    margin-right: 170px;
 }
 .description {
     font-family: Roboto;
@@ -109,10 +112,11 @@
     background-position: center;
 }
 .preloadWrapper {
-    position: relative;
-    width: 100%;
+    left: 0;
+    top: 0;
     height: 100%;
-    margin: 0 auto;
+    width: 100%;
+    position: absolute;
 }
 .preload {
     display: block;

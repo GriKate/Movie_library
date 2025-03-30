@@ -3,7 +3,6 @@ import { defineStore } from 'pinia';
 export const useMovieStore = defineStore('movieStore', {
     state: () => ({ 
         movies: [],
-        sortedMovies: [],
         showSortByName: false,
         showSortByYear: false
     }),
@@ -13,9 +12,6 @@ export const useMovieStore = defineStore('movieStore', {
     actions: {
       setMovies(arr) {
         this.movies = arr;
-      },
-      setSortedMovies(arr) {
-        this.sortedMovies = arr;
       },
       setSortByName() {
         this.showSortByName = !this.showSortByName;
@@ -31,7 +27,6 @@ export const useMovieStore = defineStore('movieStore', {
       },
       clearStore() {
         this.movies = [];
-        this.sortedMovies = [];
         this.showSortByName = false;
         this.showSortByYear = false;
       }
