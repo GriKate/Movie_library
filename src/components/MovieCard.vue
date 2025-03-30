@@ -3,7 +3,9 @@ import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import { RouterLink, useRoute } from 'vue-router';
 import styles from './MovieCard.module.scss';
-// import router from '@/router';
+
+import { useMovieStore } from '@/store';
+const movieStore = useMovieStore();
 
 const route = useRoute();
 
@@ -12,22 +14,24 @@ const props = defineProps({
     movie: Object
 })
 
-import { useMovieStore } from '@/store';
-const movieStore = useMovieStore();
-
 const movieToRender = ref({});
 const duration = ref([]);
-const showPreloader = ref(true);
-
+const preloader = ref(false);
 
 async function fetchData() {
     const reqString = `https://mashroom-movies-api.netlify.app/api/movie/${route.params.id}`;
-    const response = await axios.get(reqString)
+    await axios.get(reqString)
+    .then(res => {
+      preloader.value = false;
+      if(res.status === 200 && res.data) {
+        movieToRender.value = res.data.data;
+      }
+    })
     .catch(function(error) {
-      console.log(error)
+      preloader.value = false;
+      alert(error.message)
     });
-    movieToRender.value = response.data.data;
-    showPreloader.value = false;
+    
     // console.log('запрос 1 URL')
 } 
 
@@ -38,6 +42,7 @@ onMounted(async () => {
     //есть в стейте - из стейта
     movieToRender.value = movieStore.getMovies.find(el => el.id === +route.params.id)
   } else {
+    preloader.value = true;
     await fetchData();
   }
   duration.value = movieToRender.value.collapse.duration;
@@ -62,26 +67,24 @@ const createString = (arr, upper = true) => {
 const createRouteString = (id) => {
     return `/movie/${id}`
 }
-
-const createImageString = (id) => {
-    return `/src/assets/img/${id}.jpg`
-}
 </script>
 
 <template>
-  <template v-if="!movieToRender.id && showPreloader && $route.path !== '/'">
+  <template v-if="preloader && $route.path !== '/'">
     <div :class="styles.preloadWrapper">
       <span :class="styles.preload"></span>
     </div>
   </template>
-  <!-- <template v-else-if="!movieToRender.id && $route.path !== '/'">
+
+  <template v-else-if="!movieToRender.id && !preloader && $route.path !== '/'">
     <p>К сожалению, по вашему запросу ничего не найдено...</p>
-  </template> -->
+  </template>
+
   <template v-else>
     <li :class="styles.movieItem">
       <article :class="[styles.article, { active: $route.path === '/' }]">
         <div :class="styles.imageWrapper">
-          <img :src="createImageString(movieToRender.id)" :class="styles.movieImage" :alt="movieToRender.title" >
+          <img :src="movieToRender.poster" :class="styles.movieImage" :alt="movieToRender.title">
         </div>
         <div :class="styles.wrapper">
           <RouterLink :to="createRouteString(movieToRender.id)" :class="styles.movieName">

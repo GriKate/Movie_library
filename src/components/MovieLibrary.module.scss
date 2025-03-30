@@ -1,4 +1,4 @@
-@use './assets/variables.scss';
+@use '../assets/variables.scss';
 
 .nav {
     width: 100%;
@@ -38,7 +38,7 @@
     color: variables.$grey1;
     cursor: pointer;
     &::before {
-        content: url(./assets/img/check_box.svg);
+        content: url(../assets/img/check_box.svg);
         display: block;
         position: absolute;
         top: -1px;
@@ -64,6 +64,6 @@
     display: block;
     width: 30px;
     height: 24px;
-    background-image: url(./assets/img/arrow.svg);
+    background-image: url(../assets/img/arrow.svg);
     background-repeat: no-repeat;
 }
